@@ -1,0 +1,47 @@
+---
+- name: Example name
+  hosts: example_group
+  become: yes
+
+  vars:
+    projects:
+      - projeto1
+      - projeto2
+      - projeto3
+
+  tasks:
+    - name: create venv
+      pip:
+        name:
+          - pymongo
+        virtualenv: /home/thiagola92/Downloads/{{ item }}/venv
+        virtualenv_command: python3 -m venv
+      with_items: "{{ projects }}"
+
+    - name: copy python run
+      copy:
+        src: template.py
+        dest: /home/thiagola92/Downloads/{{ item }}/run.py
+        owner: root
+        group: root
+        mode: 0644
+      with_items: "{{ projects }}"
+
+    - name: create service definition
+      template:
+        src: template.service
+        dest: /etc/systemd/system/{{ item }}.service
+        owner: root
+        group: root
+        mode: 0644
+      vars:
+        name: "{{ item }}"
+      with_items: "{{ projects }}"
+
+    - name: Make sure a service is running
+      systemd:
+        name: "{{ item }}"
+        state: started
+        daemon_reload: yes
+        enabled: yes
+      with_items: "{{ projects }}"

@@ -1,0 +1,19 @@
+---
+- name: Example name
+  hosts: example_group
+  become: yes
+
+  vars:
+    projects:
+      - projeto1
+      - projeto2
+      - projeto3
+
+  tasks:
+    - name: create venv
+      pip:
+        name:
+          - pymongo
+        virtualenv: /home/thiagola92/Downloads/{{ item }}/venv
+        virtualenv_command: python3 -m venv
+      with_items: "{{ projects }}"

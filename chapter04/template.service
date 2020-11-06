@@ -1,0 +1,10 @@
+[Unit]
+Description=blablabla
+
+[Service]
+Type=simple
+WorkingDirectory=/home/thiagola92/Downloads/{{ name }}
+ExecStart=/home/thiagola92/Downloads/{{ name }}/venv/bin/python3 run.py
+
+[Install]
+WantedBy=multi-user.target
