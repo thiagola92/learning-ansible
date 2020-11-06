@@ -46,7 +46,7 @@ Por último as tarefas que essa **play** deve fazer:
           - unrar
 ```
 
-As tarefas utilizam módulos para serem executadas (os mesmo módulos utilizados com o comando `ansible -m ...`), você pode ver mais sobre os módulos existentes em https://docs.ansible.com/ansible/latest/modules/modules_by_category.html.  
+As tarefas utilizam módulos para serem executadas (os mesmo módulos utilizados com o comando `ansible -m ...`), você pode ver mais sobre os módulos existentes em https://docs.ansible.com/ansible/2.9/modules/list_of_all_modules.html.  
 
 Essa tarefa deve tentar instalar utilizando **apt** os aplicativos **piper**, **muon** e **unrar**. Porém, como botei para virar root, é preciso inserir a senha no arquivos **hosts**.  
 ```ini
@@ -76,4 +76,4 @@ Eu já possuia esses pacotes instalados por isso no final o relatório não most
 É importante entender a sintaxe de um arquivo `yaml` para perceber que tudo até agora é apenas um item de uma possível lista de plays.  
 
 # Reference
-Ansible modules: https://docs.ansible.com/ansible/latest/modules/modules_by_category.html  
+Ansible modules: https://docs.ansible.com/ansible/2.9/modules/list_of_all_modules.html
